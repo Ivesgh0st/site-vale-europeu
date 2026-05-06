@@ -595,6 +595,128 @@
   /* SCROLL REVEAL */
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav {
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    display: none; /* 🔥 esconde menu (depois podemos fazer menu hamburger) */
+  }
+
+  .nav-cta {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .logo img {
+    height: 30px; /* 🔧 logo menor */
+  }
+
+  /* HERO */
+  .hero {
+    grid-template-columns: 1fr; /* 🔥 quebra pra 1 coluna */
+    padding-top: 70px;
+  }
+
+  .hero-left {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-right {
+    padding: 1rem;
+  }
+
+  .hero-img-wrap {
+    max-width: 280px;
+  }
+
+  .hero-plant-emoji {
+    font-size: 5rem;
+  }
+
+  /* FEATURES */
+  .features {
+    padding: 3rem 1.5rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr; /* 🔥 1 coluna */
+  }
+
+  /* CATALOGUE */
+  .catalogue {
+    padding: 3rem 1.5rem;
+  }
+
+  .plants-grid {
+    grid-template-columns: 1fr 1fr; /* 🔥 2 por linha */
+    gap: 1rem;
+  }
+
+  .plant-img {
+    height: 140px;
+    font-size: 3rem;
+  }
+
+  /* ABOUT */
+  .about {
+    grid-template-columns: 1fr; /* 🔥 quebra layout */
+  }
+
+  .about-visual {
+    padding: 1.5rem;
+  }
+
+  .about-visual img {
+    height: 300px; /* 🔧 imagem menor */
+  }
+
+  .about-text {
+    padding: 2rem 1.5rem;
+  }
+
+  /* DEPOIMENTOS */
+  .testimonials-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .testimonial-post img {
+    height: 180px;
+  }
+
+  /* FOOTER */
+  footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+}
   </style>
 </head>
 <section>
