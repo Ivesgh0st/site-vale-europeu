@@ -7,723 +7,565 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --green-dark: #1a3d2b;
-    --green-mid: #2d6a4f;
-    --green-light: #52b788;
-    --green-pale: #b7e4c7;
-    --green-mist: #f0f7f2;
-    --white: #ffffff;
-    --off-white: #fafaf8;
-    --text-dark: #1a2e22;
-    --text-mid: #4a6357;
-    --text-light: #8aaa96;
-    --border: rgba(45, 106, 79, 0.12);
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 25px 60px;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .logo{
-  display:flex;
-  align-items:center;
+:root {
+  --green-dark: #1a3d2b;
+  --green-mid: #2d6a4f;
+  --green-light: #52b788;
+  --green-pale: #b7e4c7;
+  --green-mist: #f0f7f2;
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --text-dark: #1a2e22;
+  --text-mid: #4a6357;
+  --text-light: #8aaa96;
+  --border: rgba(45, 106, 79, 0.12);
 }
 
-.logo img{
-  height:38px;
-  width:auto;
-  display:block;
-}
-  .logo span { color: var(--green-light); font-style: italic; }
-  .nav-links { display: flex; gap: 80px; list-style: none; margin-left: 60px; }
-  .nav-links a { text-decoration: none; 
-    font-size: 0.9rem; 
-    font-weight: 400; 
-    color: var(--text-mid); 
-    letter-spacing: 0.02em; 
-    transition: color 0.2s; }
-  .nav-links a:hover { color: var(--green-dark); }
-  .nav-cta {
-    margin-left: 40px;
-    background: var(--green-dark); color: var(--white);
-    padding: 0.6rem 1.5rem; border-radius: 50px; font-size: 0.875rem; font-weight: 500;
-    text-decoration: none; transition: background 0.2s, transform 0.15s;
-  }
-  .nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
-    padding-top: 80px; background: var(--off-white);
-    position: relative; overflow: hidden;
-  }
-  .hero-left {
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 5rem 3rem 5rem 6rem;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--green-light); margin-bottom: 1.5rem;
-  }
-  .hero-tag::before { content: ''; width: 24px; height: 1px; background: var(--green-light); }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
-    line-height: 1.12; letter-spacing: -0.03em;
-    color: var(--green-dark); margin-bottom: 1.5rem;
-  }
-  .hero h1 em { font-style: italic; color: var(--green-mid); }
-  .hero p { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; max-width: 420px; margin-bottom: 2.5rem; font-weight: 300; }
-  .hero-actions { display: flex; gap: 1rem; align-items: center; }
-  .btn-primary {
-    background: var(--green-dark); color: var(--white);
-    padding: 0.875rem 2rem; border-radius: 50px; font-size: 0.95rem; font-weight: 500;
-    text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
-  }
-  .btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,61,43,0.2); }
-  .btn-ghost {
-    color: var(--green-dark); font-size: 0.9rem; font-weight: 500;
-    text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
-    transition: gap 0.2s;
-  }
-  .btn-ghost:hover { gap: 0.7rem; }
-  .hero-right { position: relative; display: flex; align-items: center; justify-content: center; padding: 3rem; }
-  .hero-img-wrap {
-    width: 100%; max-width: 480px; aspect-ratio: 3/4;
-    background: linear-gradient(160deg, var(--green-pale) 0%, var(--green-mist) 100%);
-    border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-    animation: morph 8s ease-in-out infinite;
-  }
-  @keyframes morph {
-    0%,100% { border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%; }
-    33% { border-radius: 60% 40% 40% 60% / 40% 60% 40% 60%; }
-    66% { border-radius: 50% 50% 30% 70% / 60% 30% 70% 40%; }
-  }
-  .hero-plant-emoji { font-size: 9rem; filter: drop-shadow(0 12px 32px rgba(45,106,79,0.3)); animation: float 4s ease-in-out infinite; }
-  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
-  .hero-badge {
-    position: absolute; bottom: 3.5rem; left: 1.5rem;
-    background: var(--white); border-radius: 16px; padding: 1rem 1.3rem;
-    box-shadow: 0 8px 32px rgba(26,61,43,0.12);
-    display: flex; align-items: center; gap: 0.75rem;
-  }
-  .badge-icon { font-size: 1.6rem; }
-  .badge-text div:first-child { font-size: 1.1rem; font-weight: 600; color: var(--green-dark); }
-  .badge-text div:last-child { font-size: 0.75rem; color: var(--text-light); }
-  .hero-stat {
-    position: absolute; top: 4rem; right: 1.5rem;
-    background: var(--green-dark); border-radius: 14px; padding: 0.9rem 1.2rem;
-    color: var(--white); text-align: center;
-  }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 600; display: block; }
-  .stat-label { font-size: 0.7rem; opacity: 0.7; letter-spacing: 0.05em; }
-
-  /* FEATURES */
-  .features { padding: 6rem 6rem; background: var(--white); }
-  .section-tag { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.75rem; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--green-dark); margin-bottom: 3.5rem; line-height: 1.2; }
-  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-  .feature-card {
-    padding: 2rem; border-radius: 20px; border: 1px solid var(--border);
-    background: var(--off-white); transition: all 0.3s; cursor: default;
-  }
-  .feature-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(26,61,43,0.1); border-color: var(--green-pale); }
-  .feature-icon { font-size: 2.2rem; margin-bottom: 1.2rem; }
-  .feature-card h3 { font-size: 1.1rem; font-weight: 500; color: var(--green-dark); margin-bottom: 0.6rem; }
-  .feature-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; }
-
-  /* =========================
-   CATALOGO
-========================= */
-
-.catalogue {
-  padding: 6rem;
-  background: var(--green-mist);
-}
-
-.catalogue-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 3rem;
-}
-
-/* 🔧 GRID DOS PRODUTOS */
-.plants-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-
-  /* 🔧 AJUSTE ESPAÇAMENTO ENTRE CARDS */
-  gap: 1.5rem;
-}
-
-/* =========================
-   CARD
-========================= */
-
-.plant-card {
-  background: var(--white);
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-/* 🔥 HOVER PROFISSIONAL */
-.plant-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 24px 64px rgba(26,61,43,0.12);
-}
-
-/* =========================
-   IMAGEM (AQUI FOI AJUSTADO)
-========================= */
-
-.plant-img {
-  height: 200px; /* 🔧 ALTURA DO QUADRADO */
+/* =====================
+   NAV
+===================== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: var(--green-mist);
-  position: relative;
-  overflow: hidden;
-}
-
-/* 🔥 AQUI FOI O PRINCIPAL AJUSTE DO "ZOOM" */
-.plant-img img {
-  width: 50%;
-  height: 50%;
-
-  /* 👇 evita imagem cortada / zoom exagerado */
-  object-fit: contain;
-
-  /* 👇 controla o tamanho visual da imagem */
-  transform: scale(5.85);
-
-  transition: transform 0.4s ease;
-}
-
-/* 🔥 HOVER DA IMAGEM (efeito premium) */
-.plant-card:hover .plant-img img {
-  transform: scale(2.7);
-}
-
-/* =========================
-   BADGE
-========================= */
-
-.plant-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: var(--green-dark);
-  color: var(--white);
-  font-size: 0.65rem;
-  padding: 4px 10px;
-  border-radius: 50px;
-}
-
-/* =========================
-   TEXTO
-========================= */
-
-.plant-info {
-  padding: 1.2rem;
-}
-
-.plant-info h4 {
-  font-size: 1rem;
-  color: var(--green-dark);
-}
-
-.plant-sub {
-  font-size: 0.8rem;
-  color: var(--text-light);
-  margin-bottom: 0.9rem;
-}
-
-/* =========================
-   FOOTER DO CARD
-========================= */
-
-.plant-footer {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
+  padding: 18px 40px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
 }
+.logo { display: flex; align-items: center; }
+.logo img { height: 32px; width: auto; display: block; }
+.logo span { color: var(--green-light); font-style: italic; }
 
-.plant-price {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--green-mid);
+.nav-links { display: flex; gap: 40px; list-style: none; margin-left: 40px; }
+.nav-links a {
+  text-decoration: none; font-size: 0.9rem; font-weight: 400;
+  color: var(--text-mid); letter-spacing: 0.02em; transition: color 0.2s;
 }
+.nav-links a:hover { color: var(--green-dark); }
 
-/* BOTÃO */
-.add-btn {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--green-dark);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
+.nav-cta {
+  margin-left: 24px;
+  background: var(--green-dark); color: var(--white);
+  padding: 0.55rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 500;
+  text-decoration: none; transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
 }
+.nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
 
-/* 🔥 HOVER COM ROTAÇÃO */
-.add-btn:hover {
-  background: var(--green-mid);
-  transform: rotate(90deg);
-}
+/* =====================
+   HERO
+===================== */
 
-/* =========================
-   TESTIMONIALS (NOVO)
-========================= */
-
-.testimonials {
-  padding: 4rem 6rem;
-  background: var(--white);
-  text-align: center;
-}
-
-/* HEADER DOS DEPOIMENTOS */
-.testimonials-header {
-  text-align: center;
-  margin-bottom: 2.5rem; /* 🔧 ajusta distância dos cards */
-}
-
-/* já deve existir, mas garantindo consistência */
-.section-tag {
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--green-light);
-}
-
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: var(--green-dark);
-  margin-top: 0.5rem;
-}
-/* CONTAINER DO POST */
-.testimonial-post {
-  margin-top: 1rem;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-/* IMAGEM */
-.testimonial-post img {
-  width: 100%;
-  height: 200px; /* 🔧 AJUSTE AQUI */
-  object-fit: cover; /* 🔧 corta igual Instagram */
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-/* EFEITO HOVER (opcional, fica premium) */
-.testimonial-card:hover .testimonial-post img {
-  transform: scale(1.05);
-}
-
-/* GRID ARRUMADO (BUG CORRIGIDO AQUI) */
-.testimonials-grid {
+.hero {
+  min-height: 100vh;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  /* 🔧 espaçamento menor */
-  gap: 1.5rem;
-
-  /* 🔥 impede quebrar layout */
-  align-items: start;
-}
-
-/* CARD ESTILO INSTAGRAM */
-.testimonial-card {
+  grid-template-columns: 1fr 1fr;
+  padding-top: 72px;
   background: var(--off-white);
-  padding: 1.2rem;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-
-  text-align: left;
-
-  /* 🔥 tamanho mais compacto */
-  max-width: 320px;
-  width: 100%;
-
-  transition: 0.25s;
-}
-
-/* CENTRALIZA OS CARDS */
-.testimonials-grid > * {
-  justify-self: center;
-}
-
-/* HOVER SUAVE */
-.testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-}
-
-/* TOPO (FOTO + NOME) */
-.testimonial-user {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-
-  margin-bottom: 0.6rem;
-}
-
-/* FOTO */
-.testimonial-user img {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* NOME */
-.testimonial-user strong {
-  font-size: 0.85rem;
-  color: var(--green-dark);
-}
-
-/* PROFISSÃO */
-.testimonial-user span {
-  font-size: 0.7rem;
-  color: var(--text-light);
-}
-
-/* TEXTO (ESTILO COMENTÁRIO) */
-.testimonial-text {
-  font-size: 0.85rem;
-  color: var(--text-mid);
-  line-height: 1.5;
-}
-
-/* ESTRELAS */
-.stars {
-  font-size: 0.7rem;
-  color: #f4b400;
-  margin-top: 0.3rem;
-}
-
-  /* ABOUT */
-  /* CONTAINER */
-.about {
-  display: grid;
-  grid-template-columns: 3.5fr 3.3fr;
-  min-height: 400px; /* 🔧 AJUSTE 1 */
-}
-
-/* LADO DA IMAGEM */
-.about-visual {
-  background: var(--green-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem; /* 🔧 AJUSTE 2 */
   position: relative;
   overflow: hidden;
 }
 
-/* 🔥 IMAGEM (AGORA FUNCIONA) */
-.about-visual img{
-  height: 800px; /* 🔧 AJUSTE 3 (altura da imagem) */
-  width: auto;
-  max-width: 100%;
-  object-fit: cover;
-  border-radius: 12px; /* opcional (visual mais bonito) */
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-  opacity: 0;
-  transform: translateY(60px) scale(0.95);
-  transition: all 0.8s cubic-bezier(0.23,1,0.32,1);
-}
-.about-visual img.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+/* IMAGEM AGORA NA ESQUERDA */
+.hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 3rem 3rem 10rem;
+  order: 1;
 }
 
-/* EFEITO FUNDO */
-.about-visual::before {
-  content: '';
-  position: absolute;
-  top: -30%;
-  left: -20%;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: rgba(82,183,136,0.1);
-}
-
-/* TEXTO */
-.about-text {
-  padding: 5rem 4rem;
-  background: var(--white);
+/* TEXTO AGORA NA DIREITA */
+.hero-left {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 6rem 3rem 6rem 5rem;
+  order: 2;
 }
-  /* NEWSLETTER */
-  .newsletter { padding: 5rem 6rem; background: var(--green-dark); text-align: center; }
-  .newsletter h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--white); margin-bottom: 0.8rem; }
-  .newsletter p { color: var(--green-pale); font-size: 1rem; margin-bottom: 2rem; font-weight: 300; }
-  .newsletter-form { display: flex; gap: 0.8rem; max-width: 440px; margin: 0 auto; }
-  .newsletter-form input {
-    flex: 1; padding: 0.875rem 1.2rem; border-radius: 50px;
-    border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08);
-    color: var(--white); font-size: 0.9rem; font-family: 'DM Sans', sans-serif; outline: none;
-    transition: border 0.2s;
-  }
-  .newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
-  .newsletter-form input:focus { border-color: var(--green-light); }
-  .botao-Whatsapp {
 
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 32px;
-  margin-left: 80px;
-  padding: 0.6em 1.2em 0.5em 1.2em;
+.hero-logo {
+  margin-bottom: 1.25rem;
+}
+
+.hero-logo img {
+  height: 300px;
+  width: auto;
+  display: block;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green-light);
+  margin-bottom: 1.5rem;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--green-light);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--green-dark);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--green-mid);
+}
+
+.hero p {
+  font-size: 1rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  max-width: 420px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--green-dark);
+  color: var(--white);
+  padding: 0.875rem 2rem;
   border-radius: 50px;
-  background: #40c351;
-  border: 1px solid #40c351;
-  transition: all 0.2s ease-in;
-
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
 }
 
-.botao-Whatsapp span { 
-
-  position: relative;
-  margin-left: 35px;
-  font-weight: bold; 
-
+.btn-primary:hover {
+  background: var(--green-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26,61,43,0.2);
 }
 
-.botao-Whatsapp > svg {
-  
-  height: 50px;
-  margin-left: -20px;
-  position: absolute;
-  padding: 0px;
-  margin-top: -4px;
-
+.btn-ghost {
+  color: var(--green-dark);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap 0.2s;
 }
 
-.botao-Whatsapp:active {
-  color: #666;
-  box-shadow: inset 4px 4px 12px #c5c5c5,
-             inset -4px -4px 12px #ffffff;
+.btn-ghost:hover {
+  gap: 0.7rem;
 }
 
-.botao-Whatsapp:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.25);
-  top: 100%;
-  width: 140%;
-  height: 180%;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-}
-
-.botao-Whatsapp:after {
-  content: "";
-  position: absolute;
-  left: 55%;
-  transform: translateX(-50%) scaleY(1) scaleX(1.45);
-  top: 180%;
-  width: 160%;
-  height: 190%;
-  background-color: #40c351;
-  border-radius: 50%;
-  display: block;
-  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
-  z-index: -1;
-}
-
-.botao-Whatsapp:hover {
-  color: #40c351;
-  border: 1px solid #2e2e2e;
-}
-
-.botao-Whatsapp:hover:before {
-  top: -35%;
-  background-color: #40c351;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-.botao-Whatsapp:hover:after {
-  top: -45%;
-  background-color: #2e2e2e;
-  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-}
-
-  /* FOOTER */
-  footer {
-    background: var(--off-white); padding: 3rem 6rem;
-    display: flex; align-items: center; justify-content: space-between;
-    border-top: 1px solid var(--border);
+@keyframes morph {
+  0%,100% {
+    border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
   }
-  footer .logo { font-size: 1.2rem; }
-  .footer-links { display: flex; gap: 2rem; }
-  .footer-links a { font-size: 0.85rem; color: var(--text-mid); text-decoration: none; }
-  footer .copy { font-size: 0.8rem; color: var(--text-light); }
 
-  /* SCROLL REVEAL */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  33% {
+    border-radius: 60% 40% 40% 60% / 40% 60% 40% 60%;
+  }
 
-  /* ================= MOBILE ================= */
+  66% {
+    border-radius: 50% 50% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+.hero-plant-emoji {
+  font-size: 7rem;
+  filter: drop-shadow(0 12px 32px rgba(45,106,79,0.3));
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero-plant-emoji img {
+  width: 50%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+.hero-badge {
+  position: absolute;
+  bottom: 3rem;
+  left: 1rem;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 0.85rem 1.1rem;
+  box-shadow: 0 8px 32px rgba(26,61,43,0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.badge-icon {
+  font-size: 1.4rem;
+}
+
+.badge-text div:first-child {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--green-dark);
+}
+
+.badge-text div:last-child {
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+}
+/* =====================
+   FEATURES
+===================== */
+.features { padding: 5rem 5rem; background: var(--white); }
+.section-tag {
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--green-light); margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--green-dark); margin-bottom: 3rem; line-height: 1.2;
+}
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.feature-card {
+  padding: 1.75rem; border-radius: 20px; border: 1px solid var(--border);
+  background: var(--off-white); transition: all 0.3s; cursor: default;
+}
+.feature-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(26,61,43,0.1); border-color: var(--green-pale); }
+.feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+.feature-card h3 { font-size: 1rem; font-weight: 500; color: var(--green-dark); margin-bottom: 0.5rem; }
+.feature-card p { font-size: 0.875rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; }
+
+/* =====================
+   CATÁLOGO
+===================== */
+.catalogue { padding: 5rem; background: var(--green-mist); }
+.catalogue-header {
+  display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem;
+}
+.catalogue-header a { color: var(--green-mid); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+
+.plants-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+
+.plant-card {
+  background: var(--white); border-radius: 20px; overflow: hidden;
+  border: 1px solid var(--border); transition: all 0.3s ease; cursor: pointer;
+}
+.plant-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(26,61,43,0.12); }
+
+.plant-img {
+  height: 200px; display: flex; align-items: center; justify-content: center;
+  background: var(--green-mist); position: relative; overflow: hidden;
+}
+.plant-img img {
+  width: 50%; height: 50%; object-fit: contain;
+  transform: scale(5.85); transition: transform 0.4s ease;
+}
+.plant-card:hover .plant-img img { transform: scale(2.7); }
+
+.plant-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--green-dark); color: var(--white);
+  font-size: 0.65rem; padding: 4px 10px; border-radius: 50px;
+}
+.plant-info { padding: 1.2rem; }
+.plant-info h4 { font-size: 1rem; color: var(--green-dark); }
+.plant-sub { font-size: 0.78rem; color: var(--text-light); margin-bottom: 0.9rem; }
+.plant-footer { display: flex; justify-content: space-between; align-items: center; }
+.plant-price { font-size: 1.1rem; font-weight: 600; color: var(--green-mid); }
+.add-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--green-dark); color: white; border: none; cursor: pointer; transition: 0.3s;
+}
+.add-btn:hover { background: var(--green-mid); transform: rotate(90deg); }
+
+/* =====================
+   TESTIMONIALS
+===================== */
+.testimonials { padding: 4rem 5rem; background: var(--white); }
+.testimonials-header { text-align: center; margin-bottom: 2.5rem; }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; align-items: start;
+}
+.testimonials-grid > * { justify-self: center; }
+
+.testimonial-card {
+  background: var(--off-white); padding: 1.2rem; border-radius: 16px;
+  border: 1px solid var(--border); text-align: left;
+  max-width: 320px; width: 100%; transition: 0.25s;
+}
+.testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+.testimonial-user { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.6rem; }
+.testimonial-user img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
+.testimonial-user strong { font-size: 0.85rem; color: var(--green-dark); display: block; }
+.testimonial-user span { font-size: 0.7rem; color: var(--text-light); }
+.testimonial-text { font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; }
+.stars { font-size: 0.7rem; color: #f4b400; margin-top: 0.3rem; }
+.testimonial-post { margin-top: 1rem; border-radius: 12px; overflow: hidden; }
+.testimonial-post img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.testimonial-card:hover .testimonial-post img { transform: scale(1.05); }
+
+/* =====================
+   ABOUT
+===================== */
+.about { display: grid; grid-template-columns: 1fr 1fr; min-height: 400px; }
+.about-visual {
+  background: var(--green-dark); display: flex; align-items: center;
+  justify-content: center; padding: 2rem; position: relative; overflow: hidden;
+}
+.about-visual img {
+  height: 600px; width: auto; max-width: 100%; object-fit: cover;
+  border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  opacity: 0; transform: translateY(60px) scale(0.95);
+  transition: all 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+.about-visual img.visible { opacity: 1; transform: translateY(0) scale(1); }
+.about-visual::before {
+  content: ''; position: absolute; top: -30%; left: -20%;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: rgba(82,183,136,0.1);
+}
+.about-text { padding: 4rem 3.5rem; background: var(--white); display: flex; flex-direction: column; justify-content: center; }
+.about-stats { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+.about-stat { display: flex; flex-direction: column; }
+.about-stat .num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 600; color: var(--green-dark); }
+.about-stat .lbl { font-size: 0.78rem; color: var(--text-light); }
+.about-text p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; margin-top: 1rem; }
+
+/* =====================
+   NEWSLETTER
+===================== */
+.newsletter { padding: 4rem 5rem; background: var(--green-dark); text-align: center; }
+.newsletter h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); margin-bottom: 0.8rem; }
+.newsletter p { color: var(--green-pale); font-size: 1rem; margin-bottom: 2rem; font-weight: 300; }
+.newsletter-form { display: flex; gap: 0.8rem; max-width: 440px; margin: 0 auto; justify-content: center; }
+
+.botao-Whatsapp {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  position: relative; overflow: hidden; z-index: 1;
+  text-decoration: none; color: #ffffff; font-size: 1.1rem; font-weight: bold;
+  padding: 0.75em 1.8em; border-radius: 50px;
+  background: #40c351; border: 1px solid #40c351; transition: all 0.2s ease-in;
+}
+.botao-Whatsapp svg { height: 28px; width: 28px; flex-shrink: 0; }
+.botao-Whatsapp:hover { color: #40c351; border-color: #2e2e2e; background: #2e2e2e; }
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  background: var(--off-white); padding: 2.5rem 5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--border); flex-wrap: wrap; gap: 1rem;
+}
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { font-size: 0.85rem; color: var(--text-mid); text-decoration: none; }
+footer .copy { font-size: 0.8rem; color: var(--text-light); }
+
+/* =====================
+   SCROLL REVEAL
+===================== */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+
+/* =====================================================
+   RESPONSIVIDADE MOBILE — BREAKPOINTS
+===================================================== */
+
+/* TABLET (≤ 1024px) */
+@media (max-width: 1024px) {
+  nav { padding: 16px 28px; }
+  .logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+  .nav-links { gap: 24px; margin-left: 20px; }
+
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 3rem 2rem 2rem 2rem; order: 1; }
+  .hero-right { padding: 2rem; order: 2; min-height: 320px; }
+  .hero-img-wrap { max-width: 320px; }
+  .hero-plant-emoji { font-size: 5rem; }
+
+  .features { padding: 3.5rem 2.5rem; }
+  .features-grid { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+  .catalogue { padding: 3.5rem 2.5rem; }
+  .plants-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .testimonials { padding: 3.5rem 2.5rem; }
+  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+
+  .about { grid-template-columns: 1fr; }
+  .about-visual { min-height: 300px; }
+  .about-visual img { height: 340px; }
+  .about-text { padding: 3rem 2.5rem; }
+
+  .newsletter { padding: 3.5rem 2.5rem; }
+  footer { padding: 2rem 2.5rem; }
+}
+
+/* MOBILE (≤ 768px) */
 @media (max-width: 768px) {
 
-  /* NAV */
-  nav {
-    padding: 15px 20px;
-  }
-
-  .nav-links {
-    display: none; /* 🔥 esconde menu (depois podemos fazer menu hamburger) */
-  }
-
-  .nav-cta {
-    padding: 0.5rem 1rem;
-    font-size: 0.75rem;
-  }
-
+  /* NAV — esconde links e mostra só logo + CTA */
+  nav { padding: 14px 20px; }
   .logo img {
-    height: 30px; /* 🔧 logo menor */
-  }
+  height: 28px;
+  width: auto;
+  display: block;
+}
+  .nav-links { display: none; }
+  .nav-cta { margin-left: 0; font-size: 0.8rem; padding: 0.5rem 1rem; }
 
   /* HERO */
   .hero {
-    grid-template-columns: 1fr; /* 🔥 quebra pra 1 coluna */
-    padding-top: 70px;
+    grid-template-columns: 1fr;
+    padding-top: 64px;
+    min-height: auto;
   }
-
   .hero-left {
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+    order: 1;
     text-align: center;
     align-items: center;
   }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 0.9rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-  }
+  .hero-tag { justify-content: center; }
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.6rem); }
+  .hero p { font-size: 0.95rem; max-width: 100%; text-align: center; }
+  .hero-actions { justify-content: center; }
 
   .hero-right {
-    padding: 1rem;
+    order: 2;
+    padding: 1.5rem 1.5rem 2.5rem;
+    min-height: 280px;
   }
-
   .hero-img-wrap {
-    max-width: 280px;
+    max-width: 240px;
+    aspect-ratio: 1/1;
   }
-
-  .hero-plant-emoji {
-    font-size: 5rem;
+  .hero-plant-emoji { font-size: 4.5rem; }
+  .hero-badge {
+    bottom: 1rem; left: 0.5rem;
+    padding: 0.6rem 0.8rem;
   }
+  .badge-icon { font-size: 1.1rem; }
+  .badge-text div:first-child { font-size: 0.85rem; }
+  .badge-text div:last-child { font-size: 0.65rem; }
+  .hero-stat {
+    top: 1rem; right: 0.5rem;
+    padding: 0.6rem 0.8rem;
+  }
+  .stat-num { font-size: 1.3rem; }
+  .stat-label { font-size: 0.6rem; }
 
   /* FEATURES */
-  .features {
-    padding: 3rem 1.5rem;
-  }
+  .features { padding: 2.5rem 1.5rem; }
+  .section-title { font-size: 1.6rem; margin-bottom: 2rem; }
+  .features-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .feature-card { padding: 1.4rem; }
 
-  .features-grid {
-    grid-template-columns: 1fr; /* 🔥 1 coluna */
-  }
+  /* CATÁLOGO */
+  .catalogue { padding: 2.5rem 1.5rem; }
+  .catalogue-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .plants-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .plant-img { height: 160px; }
+  .plant-info { padding: 0.9rem; }
+  .plant-info h4 { font-size: 0.9rem; }
+  .plant-sub { font-size: 0.72rem; }
 
-  /* CATALOGUE */
-  .catalogue {
-    padding: 3rem 1.5rem;
+  /* TESTIMONIALS */
+  .testimonials { padding: 2.5rem 1.5rem; }
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
   }
-
-  .plants-grid {
-    grid-template-columns: 1fr 1fr; /* 🔥 2 por linha */
-    gap: 1rem;
-  }
-
-  .plant-img {
-    height: 140px;
-    font-size: 3rem;
-  }
+  .testimonial-card { max-width: 100%; }
 
   /* ABOUT */
-  .about {
-    grid-template-columns: 1fr; /* 🔥 quebra layout */
-  }
+  .about { grid-template-columns: 1fr; }
+  .about-visual { padding: 2rem 1.5rem; min-height: 260px; }
+  .about-visual img { height: 260px; }
+  .about-text { padding: 2.5rem 1.5rem; }
+  .about-stats { gap: 1.25rem; }
+  .about-stat .num { font-size: 1.5rem; }
 
-  .about-visual {
-    padding: 1.5rem;
-  }
-
-  .about-visual img {
-    height: 300px; /* 🔧 imagem menor */
-  }
-
-  .about-text {
-    padding: 2rem 1.5rem;
-  }
-
-  /* DEPOIMENTOS */
-  .testimonials-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .testimonial-card {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .testimonial-post img {
-    height: 180px;
-  }
+  /* NEWSLETTER */
+  .newsletter { padding: 2.5rem 1.5rem; }
+  .newsletter h2 { font-size: 1.5rem; }
+  .newsletter p { font-size: 0.9rem; }
+  .newsletter-form { flex-direction: column; align-items: center; }
+  .botao-Whatsapp { font-size: 1rem; padding: 0.7em 1.5em; }
 
   /* FOOTER */
   footer {
+    padding: 1.5rem 1.5rem;
     flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
-    text-align: center;
-    padding: 2rem 1.5rem;
   }
+  .footer-links { gap: 1rem; }
+  .footer-links a { font-size: 0.8rem; }
 }
-  </style>
+
+/* MOBILE PEQUENO (≤ 400px) */
+@media (max-width: 400px) {
+  .hero h1 { font-size: 1.8rem; }
+  .plants-grid { grid-template-columns: 1fr; }
+  .hero-badge, .hero-stat { display: none; }
+}
+
+</style>
 </head>
-<section>
+<body>
 
 <nav>
   <div class="logo">
-    <img src="Imagens/HORIZONTAL SECUNDÁRIA.png" alt="Vale Europeu">
+    <img src="Imagens/HORIZONTAL SECUNDARIA.png" alt="Vale Europeu">
   </div>
   <ul class="nav-links">
     <li><a href="#hero">Início</a></li>
@@ -737,16 +579,15 @@
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-left">
-    <span class="hero-tag">Plantas Ornamentais</span>
     <h1>Leve a natureza para <em>dentro</em> do seu lar</h1>
     <p>Seleção exclusiva de plantas ornamentais cultivadas com cuidado, prontas para transformar qualquer ambiente com vida e frescor.</p>
     <div class="hero-actions">
-      <a href="https://wa.me/5555555555555" class="btn-primary">Entre em Contato</a>
+      <a href="https://wa.me/5547992075856" class="btn-primary">Entre em Contato</a>
     </div>
   </div>
   <div class="hero-right">
     <div class="hero-img-wrap">
-      <div class="hero-plant-emoji">🌿</div>
+      <div class="hero-plant-emoji"><img src="Imagens/LOGO VERTICAL.png" alt="Icon Flutuante"></div>
     </div>
     <div class="hero-badge">
       <div class="badge-icon">🚚</div>
@@ -754,10 +595,6 @@
         <div>Entrega rápida</div>
         <div>Para todo o Brasil</div>
       </div>
-    </div>
-    <div class="hero-stat">
-      <span class="stat-num">200+</span>
-      <span class="stat-label">espécies</span>
     </div>
   </div>
 </section>
@@ -775,7 +612,7 @@
     <div class="feature-card reveal">
       <div class="feature-icon">💧</div>
       <h3>Cuidados desde o início</h3>
-      <p>Cada planta foi acompanhada por um guia personalizado com dicas de rega, luminosidade e fertilização.</p>
+      <p>Cada planta foi acompanhada por um especialista com métodos exclusivos de rega, luminosidade e fertilização.</p>
     </div>
     <div class="feature-card reveal">
       <div class="feature-icon">📦</div>
@@ -792,51 +629,35 @@
       <p class="section-tag">Destaques</p>
       <h2 class="section-title" style="margin-bottom:0">Plantas em destaque</h2>
     </div>
-    <a href="#">Ver todas →</a>
+    <a href="https://www.instagram.com/valeeuropeuplantas/">Ver todas →</a>
   </div>
   <div class="plants-grid">
     <div class="plant-card reveal">
-      <div class="plant-img"><source><img src="Imagens/WhatsApp Image 2026-04-29 at 14.34.29 (1).jpeg" alt=""><span class="plant-badge">Novo</span></div>
+      <div class="plant-img"><img src="Imagens/WhatsApp Image 2026-04-29 at 14.34.29 (1).jpeg" alt="Pothos Dourado"><span class="plant-badge">Novo</span></div>
       <div class="plant-info">
         <h4>Pothos Dourado</h4>
         <div class="plant-sub">Epipremnum aureum</div>
-        <div class="plant-footer">
-          <span class="plant-price">R$ 28,90</span>
-          <button class="add-btn">+</button>
-        </div>
       </div>
     </div>
     <div class="plant-card reveal">
-      <div class="plant-img"><source><img src="Imagens/Captura de tela 2026-05-05 085920.png" alt=""><span class="plant-badge">Popular</span></div>
+      <div class="plant-img"><img src="Imagens/Captura de tela 2026-05-05 085920.png" alt="Cacto São Pedro"><span class="plant-badge">Popular</span></div>
       <div class="plant-info">
         <h4>Cacto São Pedro</h4>
         <div class="plant-sub">Echinopsis pachanoi</div>
-        <div class="plant-footer">
-          <span class="plant-price">R$ 42,00</span>
-          <button class="add-btn">+</button>
-        </div>
       </div>
     </div>
     <div class="plant-card reveal">
-      <div class="plant-img"><source><img src="Imagens/Captura de tela 2026-05-05 090021.png" alt=""><span class="plant-badge">Oferta</span></div>
+      <div class="plant-img"><img src="Imagens/Captura de tela 2026-05-05 090021.png" alt="Orquídea Phalaenopsis"><span class="plant-badge">Oferta</span></div>
       <div class="plant-info">
         <h4>Orquídea Phalaenopsis</h4>
         <div class="plant-sub">Phalaenopsis sp.</div>
-        <div class="plant-footer">
-          <span class="plant-price">R$ 65,00</span>
-          <button class="add-btn">+</button>
-        </div>
       </div>
     </div>
     <div class="plant-card reveal">
-      <div class="plant-img"><source><img src="Imagens/Captura de tela 2026-05-05 091441.png" alt=""><span class="plant-badge">Oferta</span></div>
+      <div class="plant-img"><img src="Imagens/Captura de tela 2026-05-05 091441.png" alt="Costela de Adão"><span class="plant-badge">Oferta</span></div>
       <div class="plant-info">
         <h4>Costela de Adão</h4>
         <div class="plant-sub">Monstera deliciosa</div>
-        <div class="plant-footer">
-          <span class="plant-price">R$ 55,00</span>
-          <button class="add-btn">+</button>
-        </div>
       </div>
     </div>
   </div>
@@ -845,103 +666,70 @@
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-visual">
-    <div class="big-plant"><img src="Imagens/WhatsApp Image 2026-04-29 at 14.34.29.jpeg" alt=""></div>
+    <img src="Imagens/WhatsApp Image 2026-04-29 at 14.34.29.jpeg" alt="Nossa história">
   </div>
   <div class="about-text">
     <p class="section-tag reveal">Nossa história</p>
     <h2 class="section-title reveal">Amor pelas plantas desde o início</h2>
-    <p class="reveal">Nascemos da paixão pela natureza e do desejo de levar um pedacinho do verde para cada lar. Há mais de 10 anos cultivamos espécies raras e ornamentais com todo carinho e dedicação.</p>
+    <p class="reveal">Nascemos da paixão pela natureza e do desejo de levar um pedacinho do verde para cada lar. Há mais de 20 anos cultivamos espécies raras e ornamentais com todo carinho e dedicação.</p>
     <p class="reveal">Nosso viveiro conta com mais de 200 espécies diferentes, sempre cuidadas por especialistas apaixonados pelo que fazem.</p>
     <div class="about-stats reveal">
-      <div class="about-stat"><span class="num">10+</span><span class="lbl">anos de experiência</span></div>
+      <div class="about-stat"><span class="num">20+</span><span class="lbl">anos de experiência</span></div>
       <div class="about-stat"><span class="num">200+</span><span class="lbl">espécies disponíveis</span></div>
-      <div class="about-stat"><span class="num">5k+</span><span class="lbl">clientes satisfeitos</span></div>
+      <div class="about-stat"><span class="num">10.000+</span><span class="lbl">clientes satisfeitos</span></div>
     </div>
   </div>
 </section>
 
-<section>
+<!-- TESTIMONIALS -->
+<section class="testimonials">
   <div class="testimonials-header">
-  <span class="section-tag">Depoimentos</span>
-  <h2 class="section-title">O que nossos clientes dizem</h2>
-</div>
-<div class="testimonials-grid">
-
-  <div class="testimonial-card">
-    <div class="testimonial-user">
-      <img src="https://randomuser.me/api/portraits/men/32.jpg">
-      <div>
-        <strong>rafaelmendes</strong>
-        <span>Cliente</span>
+    <span class="section-tag">Depoimentos</span>
+    <h2 class="section-title">O que nossos clientes dizem</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-user">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+        <div><strong>rafaelmendes</strong><span>Cliente</span></div>
       </div>
+      <p class="testimonial-text">A qualidade das plantas é absurda.</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-post"><img src="Imagens/Captura de tela 2026-05-05 091441.png" alt=""></div>
     </div>
-
-    <p class="testimonial-text">
-      A qualidade das plantas é absurda.
-    </p>
-
-    <div class="stars">★★★★★</div>
-     <div class="testimonial-post">
-    <img src="Imagens/Captura de tela 2026-05-05 091441.png" alt="Planta comprada">
-  </div>
-  </div>
-
-  <div class="testimonial-card">
-    <div class="testimonial-user">
-      <img src="https://randomuser.me/api/portraits/women/44.jpg">
-      <div>
-        <strong>camilarocha</strong>
-        <span>Arquiteta</span>
+    <div class="testimonial-card">
+      <div class="testimonial-user">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+        <div><strong>camilarocha</strong><span>Arquiteta</span></div>
       </div>
+      <p class="testimonial-text">Entrega rápida e atendimento impecável.</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-post"><img src="Imagens/Captura de tela 2026-05-05 091441.png" alt=""></div>
     </div>
-
-    <p class="testimonial-text">
-      Entrega rápida e atendimento impecável.
-    </p>
-
-    <div class="stars">★★★★★</div>
-     <div class="testimonial-post">
-    <img src="Imagens/Captura de tela 2026-05-05 091441.png" alt="Planta comprada">
-  </div>
-  </div>
-
-  <div class="testimonial-card">
-    <div class="testimonial-user">
-      <img src="https://randomuser.me/api/portraits/men/55.jpg">
-      <div>
-        <strong>lucasandrade</strong>
-        <span>Empresário</span>
+    <div class="testimonial-card">
+      <div class="testimonial-user">
+        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="">
+        <div><strong>lucasandrade</strong><span>Empresário</span></div>
       </div>
+      <p class="testimonial-text">Nunca vi plantas tão bem cuidadas.</p>
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-post"><img src="Imagens/Captura de tela 2026-05-05 091441.png" alt=""></div>
     </div>
-
-    <p class="testimonial-text">
-      Nunca vi plantas tão bem cuidadas.
-    </p>
-
-    <div class="stars">★★★★★</div>
-    <div class="testimonial-post">
-    <img src="Imagens/Captura de tela 2026-05-05 091441.png" alt="Planta comprada">
   </div>
-    
-  </div>
-
-</div>
 </section>
-
 
 <!-- NEWSLETTER -->
 <section class="newsletter" id="newsletter">
-  <h2 class="reveal">Entre em contato pelo whatsapp</h2>
+  <h2 class="reveal">Entre em contato pelo WhatsApp</h2>
   <p class="reveal">Receba orçamento, dicas, promoções exclusivas e lançamentos direto no seu WhatsApp.</p>
   <div class="newsletter-form reveal">
-      <a href="https://wa.me/5555555555555" class="botao-Whatsapp">
-                    
-        <svg viewBox="0 0 48 48" y="0px" x="0px" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z" fill="#fff"></path><path d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z" fill="#fff"></path><path d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z" fill="#cfd8dc"></path><path d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z" fill="#40c351"></path><path clip-rule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" fill-rule="evenodd" fill="#fff"></path>
-        </svg>
-
-        <span>WhatsApp</span>
-
+    <a href="https://wa.me/5547992075856" class="botao-Whatsapp">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z" fill="#fff"></path>
+        <path d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z" fill="#40c351"></path>
+        <path clip-rule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" fill-rule="evenodd" fill="#fff"></path>
+      </svg>
+      <span>WhatsApp</span>
     </a>
   </div>
 </section>
@@ -949,46 +737,43 @@
 <!-- FOOTER -->
 <footer>
   <div class="logo">
-    <img src="Imagens/HORIZONTAL SECUNDÁRIA.png" alt="Vale Europeu">
+    <img src="Imagens/ICON.png" alt="Vale Europeu">
   </div>
   <div class="footer-links">
-    <a href="#">Política de Privacidade</a>
-    <a href="#">Trocas e Devoluções</a>
-    <a href="#">Contato</a>
+    <a href="politica-privacidade.html">Política de Privacidade</a>
+    <a href="https://wa.me/5547992075856">Contato</a>
   </div>
   <span class="copy">© 2026 Vale Europeu</span>
 </footer>
 
-</body>
 <script>
 const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  document.querySelectorAll('.add-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      this.textContent = '✓';
-      this.style.background = '#52b788';
-      setTimeout(() => { this.textContent = '+'; this.style.background = ''; }, 1200);
-    });
-  });
-
-  const aboutImage = document.querySelector('.about-visual img');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      aboutImage.classList.add('visible');
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      obs.unobserve(e.target);
     }
   });
-}, { threshold: 0.3 });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-observer.observe(aboutImage);
+document.querySelectorAll('.add-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    this.textContent = '✓';
+    this.style.background = '#52b788';
+    setTimeout(() => { this.textContent = '+'; this.style.background = ''; }, 1200);
+  });
+});
+
+const aboutImage = document.querySelector('.about-visual img');
+if (aboutImage) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) aboutImage.classList.add('visible');
+    });
+  }, { threshold: 0.3 });
+  observer.observe(aboutImage);
+}
 </script>
+</body>
 </html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flora Verde - Plantas Ornamentais</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green-dark: #1a3d2b;
+  --green-mid: #2d6a4f;
+  --green-light: #52b788;
+  --green-pale: #b7e4c7;
+  --green-mist: #f0f7f2;
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --text-dark: #1a2e22;
+  --text-mid: #4a6357;
+  --text-light: #8aaa96;
+  --border: rgba(45, 106, 79, 0.12);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+
+/* =====================
+   NAV
+===================== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { display: flex; align-items: center; }
+.logo img { height: 32px; width: auto; display: block; }
+.logo span { color: var(--green-light); font-style: italic; }
+
+.nav-links { display: flex; gap: 40px; list-style: none; margin-left: 40px; }
+.nav-links a {
+  text-decoration: none; font-size: 0.9rem; font-weight: 400;
+  color: var(--text-mid); letter-spacing: 0.02em; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--green-dark); }
+
+.nav-cta {
+  margin-left: 24px;
+  background: var(--green-dark); color: var(--white);
+  padding: 0.55rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 500;
+  text-decoration: none; transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+/* =====================
+   HERO
+===================== */
+
+.hero {
+  min-height: auto;
+  display: block;
+  padding-top: 72px;
+  background: var(--off-white);
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 4rem 8rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--green-light); margin-bottom: 1.5rem;
+}
+.hero-tag::before { content: ''; width: 24px; height: 1px; background: var(--green-light); }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  line-height: 1.12; letter-spacing: -0.03em;
+  color: var(--green-dark); margin-bottom: 1.5rem;
+}
+.hero h1 em { font-style: italic; color: var(--green-mid); }
+.hero p {
+  font-size: 1.15rem; color: var(--text-mid); line-height: 1.55;
+  max-width: 100%; margin-bottom: 2rem; font-weight: 300;
+}
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; color: var(--green-dark);
+  margin: 2rem 0 1rem 0; font-weight: 600;
+}
+.hero ul {
+  margin: 1rem 0 1.5rem 2rem;
+  font-size: 1.1rem;
+}
+.hero li {
+  margin-bottom: 0.8rem; color: var(--text-mid);
+}
+.hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="Imagens/HORIZONTAL SECUNDARIA.png" alt="Vale Europeu">
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+  </ul>
+  <a href="https://www.instagram.com/valeeuropeuplantas/" class="nav-cta">Ver Catálogo</a>
+</nav>
+
+//hero
+
+<section class="hero" id="hero">
+  <div class="hero-left">
+<h1>Política de Privacidade</h1>
+<p><strong>Última atualização:</strong> 07 de Maio de 2026</p>
+<p>
+A Vale Europeu Plantas respeita a sua privacidade e está comprometida em proteger
+os dados pessoais coletados em nosso site, redes sociais e canais de atendimento.
+</p>
+<p>
+Ao utilizar nossos serviços, você concorda com os termos desta Política de Privacidade.
+</p>
+<br>
+<h2>1. Informações que coletamos</h2>
+<p>Podemos coletar as seguintes informações:</p>
+<ul>
+  <li>Nome completo</li>
+  <li>Número de telefone</li>
+  <li>Endereço de entrega</li>
+  <li>Endereço de e-mail</li>
+  <li>Informações enviadas via WhatsApp ou formulário de contato</li>
+  <li>Dados de navegação, como IP, navegador e páginas acessadas</li>
+</ul>
+<p>Essas informações são coletadas quando você:</p>
+<ul>
+  <li>Solicita um orçamento</li>
+  <li>Entra em contato conosco</li>
+  <li>Realiza uma compra</li>
+  <li>Se cadastra para receber novidades</li>
+  <li>Navega em nosso site</li>
+</ul>
+<br>
+<h2>2. Como utilizamos seus dados</h2>
+<p>Os dados coletados podem ser utilizados para:</p>
+<ul>
+  <li>Processar pedidos e entregas</li>
+  <li>Entrar em contato com você</li>
+  <li>Enviar informações sobre produtos e promoções</li>
+  <li>Melhorar a experiência no site</li>
+  <li>Garantir segurança e prevenção contra fraudes</li>
+  <li>Cumprir obrigações legais</li>
+</ul>
+<br>
+<h2>3. Compartilhamento de informações</h2>
+<p>
+A Vale Europeu Plantas não vende nem compartilha seus dados pessoais com terceiros,
+exceto quando necessário para:
+</p>
+<ul>
+  <li>Processamento de pagamentos</li>
+  <li>Serviços de entrega e logística</li>
+  <li>Cumprimento de obrigações legais</li>
+  <li>Proteção de direitos da empresa</li>
+</ul>
+<p>
+Todos os parceiros seguem padrões adequados de segurança e confidencialidade.
+</p>
+<br>
+<h2>4. Cookies e tecnologias de navegação</h2>
+<p>Nosso site pode utilizar cookies para:</p>
+<ul>
+  <li>Melhorar a navegação</li>
+  <li>Salvar preferências do usuário</li>
+  <li>Analisar métricas de acesso</li>
+  <li>Personalizar conteúdos e anúncios</li>
+</ul>
+<p>
+Você pode desativar os cookies diretamente nas configurações do seu navegador.
+</p>
+<br>
+<h2>5. Segurança das informações</h2>
+<p>
+Adotamos medidas técnicas e organizacionais para proteger seus dados contra:
+</p>
+<ul>
+  <li>Acessos não autorizados</li>
+  <li>Alterações indevidas</li>
+  <li>Divulgação</li>
+  <li>Perda ou destruição de informações</li>
+</ul>
+<p>
+Apesar dos nossos esforços, nenhum sistema é totalmente seguro na internet.
+</p>
+<br>
+<h2>6. Direitos do usuário</h2>
+<p>
+Nos termos da Lei Geral de Proteção de Dados (LGPD), você pode solicitar:
+</p>
+<ul>
+  <li>Confirmação do tratamento de dados</li>
+  <li>Acesso aos dados armazenados</li>
+  <li>Correção de informações incorretas</li>
+  <li>Exclusão dos dados pessoais</li>
+  <li>Revogação do consentimento</li>
+</ul>
+<p>
+Para exercer seus direitos, entre em contato pelos canais oficiais.
+</p>
+<br>
+<h2>7. Links externos</h2>
+<p>
+Nosso site pode conter links para plataformas externas, como Instagram e WhatsApp.
+Não nos responsabilizamos pelas políticas de privacidade desses serviços.
+</p>
+<br>
+<h2>8. Alterações nesta política</h2>
+<p>
+Esta Política de Privacidade poderá ser atualizada periodicamente sem aviso prévio.
+Recomendamos a leitura regular desta página.
+</p>
+<br>
+<h2>9. Contato</h2>
+<p>
+Em caso de dúvidas sobre esta Política de Privacidade ou sobre seus dados pessoais,
+entre em contato com:
+</p>
+<p>
+<strong>Vale Europeu Plantas</strong><br>
+WhatsApp: (47) 99207-5856<br>
+Instagram: @valeeuropeuplantas
+</p></p>
+    <div class="hero-actions">
+      <a href="#catalogue" class="btn-primary">Ver Catálogo</a>
+      <a href="#about" class="btn-secondary">Nossa História</a>
+    </div>
+  </div>
+  <div class="hero-right">
+  </div>
