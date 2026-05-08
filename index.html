@@ -201,11 +201,11 @@ nav {
 .hero-plant-emoji {
   font-size: 7rem;
   filter: drop-shadow(0 12px 32px rgba(45,106,79,0.3));
-  animation: float 4s ease-in-out infinite;
+  animation: float 10s ease-in-out infinite;
 }
 
 .hero-plant-emoji img {
-  width: 50%;
+  width: 60%;
   height: 100%;
   object-fit: contain;
 }
@@ -220,39 +220,6 @@ nav {
   }
 }
 
-.hero-badge {
-  position: absolute;
-  bottom: 3rem;
-  left: 1rem;
-  background: var(--white);
-  border-radius: 16px;
-  padding: 0.85rem 1.1rem;
-  box-shadow: 0 8px 32px rgba(26,61,43,0.12);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.badge-icon {
-  font-size: 1.4rem;
-}
-
-.badge-text div:first-child {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--green-dark);
-}
-
-.badge-text div:last-child {
-  font-size: 0.7rem;
-  color: var(--text-light);
-}
-
-.stat-label {
-  font-size: 0.65rem;
-  opacity: 0.7;
-  letter-spacing: 0.05em;
-}
 /* =====================
    FEATURES
 ===================== */
@@ -468,8 +435,8 @@ footer .copy { font-size: 0.8rem; color: var(--text-light); }
     min-height: auto;
   }
   .hero-left {
-    padding: 2.5rem 1.5rem 1.5rem 1.5rem;
-    order: 1;
+    order: 2; /* texto DEPOIS */
+    padding: 1rem 1.5rem 2.5rem;
     text-align: center;
     align-items: center;
   }
@@ -479,19 +446,22 @@ footer .copy { font-size: 0.8rem; color: var(--text-light); }
   .hero-actions { justify-content: center; }
 
   .hero-right {
-    order: 2;
-    padding: 1.5rem 1.5rem 2.5rem;
-    min-height: 280px;
+    order: 1; /* imagem PRIMEIRO */
+    padding: 2rem 1.5rem 1rem;
+    min-height: auto;
   }
   .hero-img-wrap {
     max-width: 240px;
     aspect-ratio: 1/1;
   }
-  .hero-plant-emoji { font-size: 4.5rem; }
-  .hero-badge {
-    bottom: 1rem; left: 0.5rem;
-    padding: 0.6rem 0.8rem;
-  }
+  .hero-plant-emoji {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
   .badge-icon { font-size: 1.1rem; }
   .badge-text div:first-child { font-size: 0.85rem; }
   .badge-text div:last-child { font-size: 0.65rem; }
@@ -528,8 +498,8 @@ footer .copy { font-size: 0.8rem; color: var(--text-light); }
 
   /* ABOUT */
   .about { grid-template-columns: 1fr; }
-  .about-visual { padding: 2rem 1.5rem; min-height: 260px; }
-  .about-visual img { height: 260px; }
+  .about-visual { padding: 2rem 1.5rem; min-height: 400px; }
+  .about-visual img { height: 400px; }
   .about-text { padding: 2.5rem 1.5rem; }
   .about-stats { gap: 1.25rem; }
   .about-stat .num { font-size: 1.5rem; }
@@ -589,12 +559,6 @@ footer .copy { font-size: 0.8rem; color: var(--text-light); }
     <div class="hero-img-wrap">
       <div class="hero-plant-emoji"><img src="Imagens/LOGO VERTICAL.png" alt="Icon Flutuante"></div>
     </div>
-    <div class="hero-badge">
-      <div class="badge-icon">🚚</div>
-      <div class="badge-text">
-        <div>Entrega rápida</div>
-        <div>Para todo o Brasil</div>
-      </div>
     </div>
   </div>
 </section>
@@ -633,31 +597,31 @@ footer .copy { font-size: 0.8rem; color: var(--text-light); }
   </div>
   <div class="plants-grid">
     <div class="plant-card reveal">
-      <div class="plant-img"><img src="Imagens/WhatsApp Image 2026-04-29 at 14.34.29 (1).jpeg" alt="Pothos Dourado"><span class="plant-badge">Novo</span></div>
+      <div class="plant-img"><img src="Imagens/Captura de tela 2026-05-08 143926.png" alt="Jabuticabeira Grande"><span class="plant-badge">Novo</span></div>
       <div class="plant-info">
-        <h4>Pothos Dourado</h4>
-        <div class="plant-sub">Epipremnum aureum</div>
+        <h4>Jabuticabeira Grande</h4>
+        <div class="plant-sub">Myrciaria dubia</div>
       </div>
     </div>
     <div class="plant-card reveal">
-      <div class="plant-img"><img src="Imagens/Captura de tela 2026-05-05 085920.png" alt="Cacto São Pedro"><span class="plant-badge">Popular</span></div>
+      <div class="plant-img"><img src="Imagens/Captura de tela 2026-05-08 144036.png" alt="Tamareira"><span class="plant-badge">Popular</span></div>
       <div class="plant-info">
-        <h4>Cacto São Pedro</h4>
-        <div class="plant-sub">Echinopsis pachanoi</div>
+        <h4>Tamareira</h4>
+        <div class="plant-sub">Cocos nucifera</div>
       </div>
     </div>
     <div class="plant-card reveal">
-      <div class="plant-img"><img src="Imagens/Captura de tela 2026-05-05 090021.png" alt="Orquídea Phalaenopsis"><span class="plant-badge">Oferta</span></div>
+      <div class="plant-img"><img src="Imagens/Captura de tela 2026-05-08 144201.png" alt="Flamboyan Vermelho"><span class="plant-badge">Popular</span></div>
       <div class="plant-info">
-        <h4>Orquídea Phalaenopsis</h4>
-        <div class="plant-sub">Phalaenopsis sp.</div>
+        <h4>Flamboyan Vermelho</h4>
+        <div class="plant-sub">Delonix regia</div>
       </div>
     </div>
     <div class="plant-card reveal">
-      <div class="plant-img"><img src="Imagens/Captura de tela 2026-05-05 091441.png" alt="Costela de Adão"><span class="plant-badge">Oferta</span></div>
+      <div class="plant-img"><img src="Imagens/Captura de tela 2026-05-08 144958.png" alt="Cerejeira do Japão"><span class="plant-badge">Exclusivo</span></div>
       <div class="plant-info">
-        <h4>Costela de Adão</h4>
-        <div class="plant-sub">Monstera deliciosa</div>
+        <h4>Cerejeira do Japão</h4>
+        <div class="plant-sub">Prunus serrulata</div>
       </div>
     </div>
   </div>
@@ -666,7 +630,7 @@ footer .copy { font-size: 0.8rem; color: var(--text-light); }
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-visual">
-    <img src="Imagens/WhatsApp Image 2026-04-29 at 14.34.29.jpeg" alt="Nossa história">
+    <img src="Imagens/imgsobr.png" alt="Nossa história">
   </div>
   <div class="about-text">
     <p class="section-tag reveal">Nossa história</p>
